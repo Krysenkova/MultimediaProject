@@ -37,11 +37,8 @@ public class PlayerMovement : MonoBehaviour
 
 
         if (Input.GetKey(KeyCode.L))
-        {
-            
-           //transform.rotation *= Quaternion.Euler(0,1,0);
-
-            //transform.Rotate(Vector3.up * Time.deltaTime * rotationSpeed);
+        { 
+           transform.rotation *= Quaternion.Euler(0,1,0);
         }
 
 
