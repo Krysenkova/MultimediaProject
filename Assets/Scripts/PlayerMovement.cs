@@ -24,29 +24,37 @@ public class PlayerMovement : MonoBehaviour
         moveHorizontal = Input.GetAxis("Horizontal");
         moveVertical = Input.GetAxis("Vertical");
 
-        angle += moveHorizontal * 0.01f * Time.deltaTime;
-
-        Vector3 targetDirection = new Vector3(Mathf.Sin(angle), 0, Mathf.Cos(angle));
+        angle += moveVertical * 0.01f * Time.deltaTime;
 
         Vector3 forwardDirection = Vector3.forward * playerSpeed;
         Vector3 rightDirection = Vector3.right * playerSpeed;
-        //to move along x Axis(vertically)
-        transform.Translate(rightDirection * Time.deltaTime * moveHorizontal * playerSpeed);
-        //to move horizontally                             
+
+        //to move along horizontally
+        //transform.Translate(rightDirection * Time.deltaTime * moveHorizontal * playerSpeed);
+        //to move vertically                             
         transform.Translate(forwardDirection * Time.deltaTime * moveVertical * playerSpeed);
 
-
-        if (Input.GetKey(KeyCode.L))
-        { 
-           transform.rotation *= Quaternion.Euler(0,1,0);
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            // transform.rotation *= rotation;
+            angle += 0.5f * playerSpeed * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            angle -= 0.5f * playerSpeed * Time.deltaTime;
+            //transform.rotation *= rotation;
         }
 
+        Vector3 targetDirection = new Vector3(Mathf.Sin(angle), 0, Mathf.Cos(angle));
+        Quaternion rotation = Quaternion.LookRotation(targetDirection);
+
+        transform.rotation = rotation;
 
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Collectable"))
+        if (other.gameObject.CompareTag("Collectable"))
         {
             other.gameObject.SetActive(false);
             score++;
