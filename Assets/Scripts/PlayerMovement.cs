@@ -61,5 +61,4 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Score: " + score);
         }
     }
-
 }
