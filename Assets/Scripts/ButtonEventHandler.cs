@@ -40,7 +40,7 @@ public class ButtonEventHandler : MonoBehaviour
         }
         if (left)
         {
-            angle -= 0.01f * 0.5f * Time.deltaTime;
+            angle += -0.01f * 0.5f * Time.deltaTime;
             Vector3 targetDirection = new Vector3(Mathf.Sin(angle), 0f, Mathf.Cos(angle));
             target.localRotation = Quaternion.LookRotation(targetDirection);
         }
@@ -60,16 +60,28 @@ public class ButtonEventHandler : MonoBehaviour
         switch (vb.VirtualButtonName)
         {
             case "btn_down":
+                up = false;
+                left = false;
+                right = false;
                 down = true;
                 break;
             case "btn_up":
                 up = true;
+                left = false;
+                right = false;
+                down = false;
                 break;
             case "btn_left":
+                up = false;
                 left = true;
+                right = false;
+                down = false;
                 break;
             case "btn_right":
+                up = false;
+                left = false;
                 right = true;
+                down = false;
                 break;
         }
     }
@@ -81,16 +93,28 @@ public class ButtonEventHandler : MonoBehaviour
         switch (vb.VirtualButtonName)
         {
             case "btn_down":
+                up = false;
+                left = false;
+                right = false;
                 down = false;
                 break;
             case "btn_up":
                 up = false;
+                left = false;
+                right = false;
+                down = false;
                 break;
             case "btn_left":
+                up = false;
                 left = false;
+                right = false;
+                down = false;
                 break;
             case "btn_right":
+                up = false;
+                left = false;
                 right = false;
+                down = false;
                 break;
         }
     }
