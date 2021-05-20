@@ -5,7 +5,7 @@ using Vuforia;
 public class ButtonEventHandler : MonoBehaviour
 {
     public Transform target;
-    public float playerSpeed = 5f;
+    public float playerSpeed = 2f;
     float angle;
 
     private bool up = false;
@@ -32,20 +32,24 @@ public class ButtonEventHandler : MonoBehaviour
 
         if (up)
         {
+            Debug.Log("Going UUUUUUUp");
             target.position += target.forward * Time.deltaTime * playerSpeed;
         }
         if (down)
         {
-            target.position -= target.forward * Time.deltaTime * playerSpeed;
+            Debug.Log("Going Down");
+            target.position += -target.forward * Time.deltaTime * playerSpeed;
         }
         if (left)
         {
+            Debug.Log("Rotate Left");
             angle += -0.01f * 0.5f * Time.deltaTime;
             Vector3 targetDirection = new Vector3(Mathf.Sin(angle), 0f, Mathf.Cos(angle));
             target.localRotation = Quaternion.LookRotation(targetDirection);
         }
         if (right == true)
         {
+            Debug.Log("Rotate Right");
             angle += 0.01f * 0.5f * Time.deltaTime;
             Vector3 targetDirection = new Vector3(Mathf.Sin(angle), 0f, Mathf.Cos(angle));
             target.localRotation = Quaternion.LookRotation(targetDirection);
@@ -60,10 +64,10 @@ public class ButtonEventHandler : MonoBehaviour
         switch (vb.VirtualButtonName)
         {
             case "btn_down":
+                down = true;
                 up = false;
                 left = false;
                 right = false;
-                down = true;
                 break;
             case "btn_up":
                 up = true;
@@ -72,8 +76,8 @@ public class ButtonEventHandler : MonoBehaviour
                 down = false;
                 break;
             case "btn_left":
-                up = false;
                 left = true;
+                up = false;
                 right = false;
                 down = false;
                 break;
@@ -93,28 +97,16 @@ public class ButtonEventHandler : MonoBehaviour
         switch (vb.VirtualButtonName)
         {
             case "btn_down":
-                up = false;
-                left = false;
-                right = false;
                 down = false;
                 break;
             case "btn_up":
                 up = false;
-                left = false;
-                right = false;
-                down = false;
                 break;
             case "btn_left":
-                up = false;
                 left = false;
-                right = false;
-                down = false;
                 break;
             case "btn_right":
-                up = false;
-                left = false;
                 right = false;
-                down = false;
                 break;
         }
     }
