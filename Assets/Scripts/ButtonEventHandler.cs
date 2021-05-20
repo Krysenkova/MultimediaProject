@@ -7,7 +7,7 @@ public class ButtonEventHandler : MonoBehaviour
     public Transform target;
     public float playerSpeed = 2f;
     float angle;
-
+   
     private bool up = false;
     private bool down = false;
     private bool left = false;
@@ -64,24 +64,28 @@ public class ButtonEventHandler : MonoBehaviour
         switch (vb.VirtualButtonName)
         {
             case "btn_down":
+                Debug.Log("Pressed Down");
                 down = true;
                 up = false;
                 left = false;
                 right = false;
                 break;
             case "btn_up":
+                Debug.Log("Pressed Up");
                 up = true;
                 left = false;
                 right = false;
                 down = false;
                 break;
             case "btn_left":
+                Debug.Log("Pressed Left");
                 left = true;
                 up = false;
                 right = false;
                 down = false;
                 break;
             case "btn_right":
+                Debug.Log("Pressed Right");
                 up = false;
                 left = false;
                 right = true;
@@ -97,15 +101,19 @@ public class ButtonEventHandler : MonoBehaviour
         switch (vb.VirtualButtonName)
         {
             case "btn_down":
+                Debug.Log("Released Down");
                 down = false;
                 break;
             case "btn_up":
+                Debug.Log("Released Up");
                 up = false;
                 break;
             case "btn_left":
+                Debug.Log("Released Left");
                 left = false;
                 break;
             case "btn_right":
+                Debug.Log("Released Right");
                 right = false;
                 break;
         }
