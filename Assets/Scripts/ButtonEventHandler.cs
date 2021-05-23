@@ -29,11 +29,17 @@ public class ButtonEventHandler : MonoBehaviour
     }
     void Update()
     {
+        angle += Input.GetAxis("Vertical") * 0.01f * Time.deltaTime;
+        Vector3 targetDirection = new Vector3(Mathf.Sin(angle), 0f, Mathf.Cos(angle));
+        Quaternion rotation = Quaternion.LookRotation(targetDirection);
+
+        target.rotation = rotation;
 
         if (up)
         {
             Debug.Log("Going UUUUUUUp");
             target.position += target.forward * Time.deltaTime * playerSpeed;
+            
         }
         if (down)
         {
@@ -43,17 +49,24 @@ public class ButtonEventHandler : MonoBehaviour
         if (left)
         {
             Debug.Log("Rotate Left");
-            angle += -0.01f * 0.5f * Time.deltaTime;
-            Vector3 targetDirection = new Vector3(Mathf.Sin(angle), 0f, Mathf.Cos(angle));
-            target.localRotation = Quaternion.LookRotation(targetDirection);
+            angle += 0.5f * playerSpeed * Time.deltaTime; ;
+           // Vector3 targetDirection = new Vector3(Mathf.Sin(angle), 0f, Mathf.Cos(angle));
+            //Quaternion rotation = Quaternion.LookRotation(targetDirection);
+
+           // target.rotation = rotation;
+            // target.localRotation = Quaternion.LookRotation(targetDirection);
         }
         if (right == true)
         {
             Debug.Log("Rotate Right");
-            angle += 0.01f * 0.5f * Time.deltaTime;
-            Vector3 targetDirection = new Vector3(Mathf.Sin(angle), 0f, Mathf.Cos(angle));
-            target.localRotation = Quaternion.LookRotation(targetDirection);
+            angle -= 0.5f * playerSpeed * Time.deltaTime; ;
+            //Vector3 targetDirection = new Vector3(Mathf.Sin(angle), 0f, Mathf.Cos(angle));
+           // Quaternion rotation = Quaternion.LookRotation(targetDirection);
+
+            //target.rotation = rotation;
+            //target.localRotation = Quaternion.LookRotation(targetDirection);
         }
+        
 
     }
     /// <summary>
