@@ -58,6 +58,8 @@
      <Compile Include="Assets\Scripts\ButtonEventHandler.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\CollectableScript.cs" />
+     <Compile Include="Assets\Scripts\CollectablesMovement.cs" />
+     <Compile Include="Assets\Scripts\MenuManager.cs" />
      <Compile Include="Assets\Scripts\MonsterScript.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
      <None Include="Assets\StreamingAssets\Vuforia\Demo.xml" />
