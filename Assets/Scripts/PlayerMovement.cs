@@ -55,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Collectable"))
-        {
+        { 
             other.gameObject.SetActive(false);
             score++;
             Debug.Log("Score: " + score);

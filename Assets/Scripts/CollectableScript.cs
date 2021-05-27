@@ -15,6 +15,7 @@ public class CollectableScript : MonoBehaviour
     public float z1;
     public float z2;
     
+    
 
     void Start()
     {
@@ -23,14 +24,13 @@ public class CollectableScript : MonoBehaviour
         {
             var newCollectable = Instantiate(myPrefab, new Vector3(Random.Range(x1, x2), y, Random.Range(z1, z2)), Quaternion.identity);
             newCollectable.transform.parent = gameObject.transform;
-                      //Instantiate(myPrefab, new Vector3(Random.Range(-0.45f, 0.32f), y, Random.Range(-0.28f,0.28f)), Quaternion.identity);
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-       
+        
     }
 
  
